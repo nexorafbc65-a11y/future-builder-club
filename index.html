@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future Builder Club — Build Your Empire</title>
+<meta name="description" content="India's #1 teen entrepreneur community. Learn AI, startups, design, marketing & game dev. Join 1000+ young builders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ee;
+    --cream: #f0ede6;
+    --accent: #ff4d1c;
+    --accent2: #7c3aed;
+    --accent3: #059669;
+    --gold: #d4a853;
+    --mid: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: rgba(245,243,238,0.1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: rgba(245,243,238,0.6);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent) !important;
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 500 !important;
+    font-size: 0.82rem !important;
+    transition: opacity 0.2s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.85 !important; }
+
+  .nav-mobile-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(245,243,238,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,243,238,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,77,28,0.12) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(255,77,28,0.3);
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fade-up 0.8s ease both;
+    position: relative;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: blink 1.4s ease-in-out infinite;
+  }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  .hero-h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+    position: relative;
+    animation: fade-up 0.8s 0.1s ease both;
+  }
+
+  .hero-h1 .line2 { color: var(--accent); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    font-weight: 300;
+    color: rgba(245,243,238,0.6);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    animation: fade-up 0.8s 0.2s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fade-up 0.8s 0.3s ease both;
+    margin-bottom: 72px;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1px solid rgba(245,243,238,0.2);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-secondary:hover { border-color: rgba(245,243,238,0.5); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fade-up 0.8s 0.4s ease both;
+    position: relative;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.03em;
+  }
+
+  .stat-num span { color: var(--accent); }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(245,243,238,0.45);
+    margin-top: 2px;
+    font-weight: 300;
+  }
+
+  .marquee-wrap {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    overflow: hidden;
+    background: rgba(255,77,28,0.04);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: marquee 20s linear infinite;
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 32px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,243,238,0.4);
+    white-space: nowrap;
+  }
+
+  .marquee-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+
+  .section-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .section-h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: rgba(245,243,238,0.55);
+    font-weight: 300;
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 60px;
+  }
+
+  .tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+  }
+
+  .track-card {
+    padding: 36px 32px;
+    background: var(--mid);
+    border: 1px solid rgba(245,243,238,0.06);
+    cursor: default;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .track-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .track-card:hover::before { opacity: 1; }
+  .track-card:hover { border-color: rgba(245,243,238,0.15); }
+
+  .track-card.c-red::before { background: linear-gradient(135deg, rgba(255,77,28,0.08), transparent); }
+  .track-card.c-purple::before { background: linear-gradient(135deg, rgba(124,58,237,0.08), transparent); }
+  .track-card.c-green::before { background: linear-gradient(135deg, rgba(5,150,105,0.08), transparent); }
+  .track-card.c-gold::before { background: linear-gradient(135deg, rgba(212,168,83,0.08), transparent); }
+  .track-card.c-blue::before { background: linear-gradient(135deg, rgba(59,130,246,0.08), transparent); }
+  .track-card.c-pink::before { background: linear-gradient(135deg, rgba(236,72,153,0.08), transparent); }
+
+  .track-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(245,243,238,0.2);
+    margin-bottom: 10px;
+  }
+
+  .track-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .track-name.red { color: var(--accent); }
+  .track-name.purple { color: #a78bfa; }
+  .track-name.green { color: #34d399; }
+  .track-name.gold { color: var(--gold); }
+  .track-name.blue { color: #60a5fa; }
+  .track-name.pink { color: #f472b6; }
+
+  .track-desc {
+    font-size: 0.88rem;
+    color: rgba(245,243,238,0.5);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .track-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 20px;
+  }
+
+  .track-tag {
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(245,243,238,0.1);
+    color: rgba(245,243,238,0.4);
+  }
+
+  .community-wrap {
+    background: var(--mid);
+    border: 1px solid rgba(245,243,238,0.06);
+    border-radius: 20px;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .community-wrap::after {
+    content: '';
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.12), transparent 70%);
+    pointer-events: none;
+  }
+
+  .community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .comm-event {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(245,243,238,0.07);
+  }
+
+  .comm-event:last-child { border-bottom: none; }
+
+  .comm-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .comm-event-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .comm-event-desc {
+    font-size: 0.82rem;
+    color: rgba(245,243,238,0.45);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .comm-freq {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 2px 10px;
+    border-radius: 100px;
+    background: rgba(245,243,238,0.07);
+    color: rgba(245,243,238,0.4);
+    display: inline-block;
+    margin-top: 6px;
+  }
+
+  .tools-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .tool-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: rgba(245,243,238,0.04);
+    border: 1px solid rgba(245,243,238,0.1);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tool-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .tool-link.discord::before { background: linear-gradient(135deg, rgba(88,101,242,0.1), transparent); }
+  .tool-link.notion::before { background: linear-gradient(135deg, rgba(245,243,238,0.06), transparent); }
+  .tool-link:hover::before { opacity: 1; }
+  .tool-link:hover { border-color: rgba(245,243,238,0.25); transform: translateY(-2px); }
+
+  .tool-icon-wrap {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .tool-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .tool-desc {
+    font-size: 0.78rem;
+    color: rgba(245,243,238,0.4);
+    font-weight: 300;
+  }
+
+  .tool-arrow {
+    margin-left: auto;
+    color: rgba(245,243,238,0.2);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .pricing-wrap {
+    background: rgba(245,243,238,0.02);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 100px 40px;
+  }
+
+  .pricing-inner { max-width: 1200px; margin: 0 auto; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .price-card {
+    padding: 40px 32px;
+    background: var(--mid);
+    border: 1px solid rgba(245,243,238,0.06);
+    position: relative;
+  }
+
+  .price-card.featured {
+    border-color: var(--accent);
+    background: rgba(255,77,28,0.05);
+  }
+
+  .featured-tag {
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .price-tier {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,243,238,0.4);
+    margin-bottom: 12px;
+  }
+
+  .price-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: 6px;
+  }
+
+  .price-period {
+    font-size: 0.82rem;
+    color: rgba(245,243,238,0.4);
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+
+  .price-divider { height: 1px; background: rgba(245,243,238,0.08); margin-bottom: 24px; }
+
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+
+  .price-features li {
+    font-size: 0.85rem;
+    color: rgba(245,243,238,0.7);
+    font-weight: 300;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .price-features li::before {
+    content: '—';
+    color: var(--accent);
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    margin-top: 1px;
+  }
+
+  .price-features li.off { color: rgba(245,243,238,0.25); }
+  .price-features li.off::before { color: rgba(245,243,238,0.15); }
+
+  .price-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid rgba(245,243,238,0.2);
+    color: var(--white);
+    background: transparent;
+  }
+
+  .price-btn:hover { border-color: rgba(245,243,238,0.5); }
+  .price-btn.accent { background: var(--accent); border-color: var(--accent); }
+  .price-btn.accent:hover { opacity: 0.88; }
+
+  .manifesto {
+    text-align: center;
+    padding: 120px 40px;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+  }
+
+  .manifesto::before {
+    content: '';
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,77,28,0.06), transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+
+  .manifesto-quote {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    max-width: 800px;
+    margin: 0 auto 32px;
+    position: relative;
+  }
+
+  .manifesto-quote .highlight { color: var(--accent); }
+
+  .manifesto-sub {
+    font-size: 1rem;
+    color: rgba(245,243,238,0.45);
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(245,243,238,0.3);
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: rgba(245,243,238,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: rgba(10,10,10,0.98);
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+    .nav-links.open a { font-size: 1rem; }
+    .nav-mobile-btn { display: block; }
+    section { padding: 70px 20px; }
+    .community-grid { grid-template-columns: 1fr; gap: 40px; }
+    .tools-row { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .community-wrap { padding: 36px 24px; }
+    .pricing-wrap { padding: 70px 20px; }
+    footer { flex-direction: column; text-align: center; padding: 30px 20px; }
+    .hero-stats { gap: 28px; }
+  }
+
+  @media (max-width: 480px) {
+    .tracks-grid { grid-template-columns: 1fr; }
+    .hero-btns { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#"><span>FBC</span> Future Builder Club</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#what-we-do">What we do</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#pricing">Membership</a></li>
+    <li><a href="https://discord.gg/uKTafERfc" target="_blank" class="nav-cta">Join Discord</a></li>
+  </ul>
+  <button class="nav-mobile-btn" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-tag">India's teen builder community</div>
+  <h1 class="hero-h1">
+    Stop Waiting.<br>
+    <span class="line2">Start Building.</span>
+  </h1>
+  <p class="hero-sub">
+    Future Builder Club is where Indian teenagers learn AI, startups, game design, marketing &amp; more — through real community, live sessions, and hands-on projects.
+  </p>
+  <div class="hero-btns">
+    <a href="https://discord.gg/uKTafERfc" class="btn-primary" target="_blank">Join Free on Discord →</a>
+    <a href="#what-we-do" class="btn-secondary">See what we build</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">500<span>+</span></div>
+      <div class="stat-label">teen builders</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">12<span>+</span></div>
+      <div class="stat-label">live sessions/month</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6<span>+</span></div>
+      <div class="stat-label">skill tracks</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">teen-led</div>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>AI &amp; Automation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Startup Building</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Game Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Digital Marketing</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Skill Development</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Live Workshops</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Animation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Community Calls</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>AI &amp; Automation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Startup Building</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Game Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Digital Marketing</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Skill Development</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Live Workshops</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Animation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Community Calls</div>
+  </div>
+</div>
+
+<section id="what-we-do">
+  <div class="section-tag reveal">What we build</div>
+  <h2 class="section-h2 reveal">Six tracks.<br>Zero limits.</h2>
+  <p class="section-sub reveal">Pick your path. Every track runs through live sessions, real projects, and a community that pushes you forward.</p>
+  <div class="tracks-grid">
+    <div class="track-card c-red reveal">
+      <div class="track-num">01</div>
+      <div class="track-name red">AI &amp; Automation</div>
+      <div class="track-desc">Learn to build with AI tools, automate boring tasks, create chatbots, and understand how to use AI as a teen founder's superpower.</div>
+      <div class="track-tags">
+        <span class="track-tag">ChatGPT</span>
+        <span class="track-tag">No-code AI</span>
+        <span class="track-tag">Automation</span>
+        <span class="track-tag">Prompt engineering</span>
+      </div>
+    </div>
+    <div class="track-card c-purple reveal">
+      <div class="track-num">02</div>
+      <div class="track-name purple">Startup Building</div>
+      <div class="track-desc">Turn ideas into real businesses. Learn validation, business models, pricing, and how to build your first product before you're 18.</div>
+      <div class="track-tags">
+        <span class="track-tag">Ideation</span>
+        <span class="track-tag">MVP building</span>
+        <span class="track-tag">Pitching</span>
+        <span class="track-tag">Fundraising basics</span>
+      </div>
+    </div>
+    <div class="track-card c-gold reveal">
+      <div class="track-num">03</div>
+      <div class="track-name gold">Game Design</div>
+      <div class="track-desc">Design and build your own games. Level design, storytelling, mechanics, and publishing — whether it's mobile, PC, or browser games.</div>
+      <div class="track-tags">
+        <span class="track-tag">Unity basics</span>
+        <span class="track-tag">Game mechanics</span>
+        <span class="track-tag">Level design</span>
+        <span class="track-tag">Publishing</span>
+      </div>
+    </div>
+    <div class="track-card c-green reveal">
+      <div class="track-num">04</div>
+      <div class="track-name green">Digital Marketing</div>
+      <div class="track-desc">Master Instagram growth, content strategy, SEO, and paid ads. Build an audience for your business from scratch — even with ₹0 budget.</div>
+      <div class="track-tags">
+        <span class="track-tag">Instagram</span>
+        <span class="track-tag">Content strategy</span>
+        <span class="track-tag">SEO</span>
+        <span class="track-tag">Personal brand</span>
+      </div>
+    </div>
+    <div class="track-card c-pink reveal">
+      <div class="track-num">05</div>
+      <div class="track-name pink">Animation &amp; Design</div>
+      <div class="track-desc">From motion graphics to brand identity — learn Canva, CapCut, and design principles that make your projects look world-class.</div>
+      <div class="track-tags">
+        <span class="track-tag">Motion graphics</span>
+        <span class="track-tag">Canva pro tips</span>
+        <span class="track-tag">Brand design</span>
+        <span class="track-tag">UI basics</span>
+      </div>
+    </div>
+    <div class="track-card c-blue reveal">
+      <div class="track-num">06</div>
+      <div class="track-name blue">Skill Development</div>
+      <div class="track-desc">Public speaking, leadership, financial literacy, productivity systems — the skills school doesn't teach but every builder needs.</div>
+      <div class="track-tags">
+        <span class="track-tag">Public speaking</span>
+        <span class="track-tag">Finance basics</span>
+        <span class="track-tag">Productivity</span>
+        <span class="track-tag">Leadership</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="community" style="padding-top:0">
+  <div class="community-wrap reveal">
+    <div class="community-grid">
+      <div>
+        <div class="section-tag">Community life</div>
+        <h2 class="section-h2" style="font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:16px">Real events.<br>Real people.</h2>
+        <p style="font-size:0.9rem;color:rgba(245,243,238,0.5);font-weight:300;line-height:1.7;margin-bottom:32px">
+          FBC isn't a course. It's a living, breathing community that shows up every week — with sessions you actually look forward to.
+        </p>
+        <div class="tools-row">
+          <a href="https://discord.gg/uKTafERfc" class="tool-link discord" target="_blank">
+            <div class="tool-icon-wrap" style="background:rgba(88,101,242,0.15)">💬</div>
+            <div>
+              <div class="tool-name">Discord</div>
+              <div class="tool-desc">Live community hub</div>
+            </div>
+            <div class="tool-arrow">↗</div>
+          </a>
+          <a href="https://notion.so/YOUR-LINK" class="tool-link notion" target="_blank">
+            <div class="tool-icon-wrap" style="background:rgba(245,243,238,0.08)">📋</div>
+            <div>
+              <div class="tool-name">Notion</div>
+              <div class="tool-desc">Resources &amp; roadmaps</div>
+            </div>
+            <div class="tool-arrow">↗</div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="comm-event">
+          <div class="comm-dot" style="background:var(--accent)"></div>
+          <div>
+            <div class="comm-event-name">Community Calls</div>
+            <div class="comm-event-desc">Open video calls where builders share updates, ask questions, and connect with each other across India.</div>
+            <span class="comm-freq">Every week</span>
+          </div>
+        </div>
+        <div class="comm-event">
+          <div class="comm-dot" style="background:#a78bfa"></div>
+          <div>
+            <div class="comm-event-name">Live Sessions</div>
+            <div class="comm-event-desc">Deep-dive workshops on one skill — AI tools, startup pitching, game design, marketing campaigns. Always hands-on.</div>
+            <span class="comm-freq">2–3 per month</span>
+          </div>
+        </div>
+        <div class="comm-event">
+          <div class="comm-dot" style="background:#34d399"></div>
+          <div>
+            <div class="comm-event-name">Build Challenges</div>
+            <div class="comm-event-desc">48-hour sprints where you build something real — a landing page, a game level, a marketing campaign — and share with the community.</div>
+            <span class="comm-freq">Monthly</span>
+          </div>
+        </div>
+        <div class="comm-event">
+          <div class="comm-dot" style="background:var(--gold)"></div>
+          <div>
+            <div class="comm-event-name">Startup Workshops</div>
+            <div class="comm-event-desc">Step-by-step sessions on validating ideas, building MVPs, writing pitch decks, and finding your first customers.</div>
+            <span class="comm-freq">Monthly</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pricing-wrap" id="pricing">
+  <div class="pricing-inner">
+    <div style="text-align:center;margin-bottom:60px">
+      <div class="section-tag reveal">Membership</div>
+      <h2 class="section-h2 reveal">Your tier.<br>Your pace.</h2>
+      <p class="section-sub reveal" style="margin:0 auto">Start free. Upgrade when you're ready. No pressure, no lock-ins.</p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="price-card">
+        <div class="price-tier">Explorer</div>
+        <div class="price-amount">₹0</div>
+        <div class="price-period">forever free</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Instagram content access</li>
+          <li>Public Discord community</li>
+          <li>Weekly business tips</li>
+          <li>Monthly free resource drop</li>
+          <li class="off">Private community channels</li>
+          <li class="off">Live session recordings</li>
+          <li class="off">1-on-1 mentorship</li>
+        </ul>
+        <a href="https://discord.gg/uKTafERfc" class="price-btn" target="_blank">Join free →</a>
+      </div>
+      <div class="price-card featured">
+        <div class="featured-tag">Most Popular</div>
+        <div class="price-tier">Builder</div>
+        <div class="price-amount">₹199</div>
+        <div class="price-period">per month · cancel anytime</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Everything in Explorer</li>
+          <li>Private Discord channels</li>
+          <li>Live session recordings</li>
+          <li>Weekly build challenges</li>
+          <li>Member resource vault</li>
+          <li>Monthly group Q&amp;A call</li>
+          <li class="off">1-on-1 mentorship calls</li>
+        </ul>
+        <a href="https://razorpay.com/YOUR-LINK" class="price-btn accent" target="_blank">Join Builder →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Empire</div>
+        <div class="price-amount">₹499</div>
+        <div class="price-period">per month · limited seats</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Everything in Builder</li>
+          <li>Monthly 1-on-1 call (30 min)</li>
+          <li>Business idea feedback</li>
+          <li>Featured on FBC Instagram</li>
+          <li>Empire member badge</li>
+          <li>Early event access</li>
+          <li>Founder network &amp; collabs</li>
+        </ul>
+        <a href="https://razorpay.com/YOUR-LINK" class="price-btn" target="_blank">Join Empire →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="manifesto">
+  <p class="manifesto-quote reveal">
+    School teaches you to wait.<br>
+    <span class="highlight">We teach you to build.</span>
+  </p>
+  <p class="manifesto-sub reveal">
+    You don't need a degree, a mentor, or permission. You need a community that believes you can build something real — right now, at your age.
+  </p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap" class="reveal">
+    <a href="https://discord.gg/uKTafERfc" class="btn-primary" target="_blank">Join the community →</a>
+    <a href="https://notion.so/YOUR-LINK" class="btn-secondary" target="_blank">Browse our Notion →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><span>FBC</span> Future Builder Club</div>
+  <div class="footer-copy">© 2025 Future Builder Club · Made by teens, for teens · India</div>
+  <ul class="footer-links">
+    <li><a href="https://instagram.com/futurebuilderclub" target="_blank">Instagram</a></li>
+    <li><a href="https://discord.gg/uKTafERfc" target="_blank">Discord</a></li>
+    <li><a href="https://notion.so/YOUR-LINK" target="_blank">Notion</a></li>
+  </ul>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.background =
+      window.scrollY > 40 ? 'rgba(10,10,10,0.97)' : 'rgba(10,10,10,0.85)';
+  });
+</script>
+
+</body>
+</html>
